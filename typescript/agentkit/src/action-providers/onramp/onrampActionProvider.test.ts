@@ -68,8 +68,10 @@ describe("OnrampActionProvider", () => {
     });
 
     /**
+     * Parses URL search parameters from a URL string.
      *
-     * @param url
+     * @param url - The URL string to parse parameters from
+     * @returns The parsed URL search parameters
      */
     function parseUrlParams(url: string): URLSearchParams {
       const urlObj = new URL(url);

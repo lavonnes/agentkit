@@ -1,10 +1,10 @@
 # Onramp Action Provider
 
-This directory contains the **OnrampActionProvider** implementation, which provides actions for onramp operations.
+This directory contains the **OnrampActionProvider** implementation, which provides actions for cryptocurrency onramp operations - specifically helping users purchase cryptocurrency using fiat currency (regular money like USD).
 
 ## Overview
 
-The OnrampActionProvider is designed to work with EvmWalletProvider for blockchain interactions. It provides a set of actions that enable [describe the main purpose/functionality].
+The OnrampActionProvider is designed to work with EvmWalletProvider for blockchain interactions. It provides actions that enable users to purchase cryptocurrency when they need more funds, integrating with Coinbase's onramp service.
 
 ## Directory Structure
 
@@ -12,28 +12,34 @@ The OnrampActionProvider is designed to work with EvmWalletProvider for blockcha
 onramp/
 ├── onrampActionProvider.ts       # Main provider implementation
 └── onrampActionProvider.test.ts  # Provider test suite
-├── schemas.ts                      # Action schemas and types
-├── index.ts                        # Package exports
-└── README.md                       # Documentation (this file)
+├── schemas.ts                    # Action schemas and types
+├── utils/                        # Utility functions
+│   ├── getOnrampBuyUrl.ts        # Generates Coinbase Onramp purchase URLs
+│   ├── networkConversion.ts      # Converts between network ID formats
+│   ├── types.ts                  # Type definitions for URL generation
+│   └── version.ts                # Version and URL constants
+├── index.ts                      # Package exports
+└── README.md                     # Documentation (this file)
 ```
 
 ## Actions
 
-### Example Action
-- `example-action`: Template action implementation
-  - **Purpose**: Demonstrates the basic structure of an action
-  - **Input**:
-    - `fieldName` (string): A descriptive name for the field (1-100 chars)
-    - `amount` (string): The amount as a decimal string (e.g. "1.5")
-    - `optionalField` (string, optional): Optional parameter example
-  - **Output**: String describing the action result
-  - **Example**:
-    ```typescript
-    const result = await provider.exampleAction(walletProvider, {
-      fieldName: "test",
-      amount: "1.0"
-    });
-    ```
+### get_onramp_buy_url
+- **Purpose**: Generates a URL for purchasing cryptocurrency through Coinbase's onramp service
+- **Input**:
+  - `asset` (enum): The cryptocurrency to purchase ("ETH" or "USDC", defaults to "ETH")
+- **Output**: String containing the URL to the Coinbase-powered purchase interface
+- **Example**:
+  ```typescript
+  const result = await provider.getOnrampBuyUrl(walletProvider, {
+    asset: "ETH"
+  });
+  ```
+
+Use this action when:
+- The wallet has insufficient funds for a transaction
+- You need to guide the user to purchase more cryptocurrency
+- The user asks how to buy more crypto
 
 ## Implementation Details
 
@@ -42,9 +48,9 @@ This provider supports all evm networks.
 
 ### Wallet Provider Integration
 This provider is specifically designed to work with EvmWalletProvider. Key integration points:
-- Network compatibility checks
-- Transaction signing and execution
-- Balance and account management
+- Uses the wallet's current network for generating appropriate purchase URLs
+- Integrates the wallet's address for directing purchased funds
+- Validates network compatibility before operations
 
 ## Adding New Actions
 
@@ -65,7 +71,8 @@ To add new actions:
      schema: NewActionSchema,
    })
    async newAction(
-walletProvider: EvmWalletProvider,      args: z.infer<typeof NewActionSchema>
+     walletProvider: EvmWalletProvider,
+     args: z.infer<typeof NewActionSchema>
    ): Promise<string> {
      // Implement your action logic
    }
@@ -79,6 +86,7 @@ When implementing new actions, ensure to:
 
 ## Notes
 
-- Add any specific considerations for this action provider
-- Document any prerequisites or setup requirements
-- Include relevant external documentation links
+- The provider requires a valid project ID for operation
+- Currently supports ETH and USDC purchases
+- Uses Coinbase's infrastructure for secure fiat-to-crypto transactions
+- All operations are performed on EVM-compatible networks only
