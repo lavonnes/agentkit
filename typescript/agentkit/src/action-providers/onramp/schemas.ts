@@ -16,7 +16,7 @@ export const GetOnrampBuyUrlActionSchema = z.object({
    * The cryptocurrency asset to purchase (ETH, USDC, or BTC)
    */
   asset: z
-    .enum(["ETH", "USDC", "BTC"])
+    .enum(["ETH", "USDC"])
     .default("ETH")
     .describe(
       "The cryptocurrency to purchase. Use this when you need to buy more funds to complete transactions.",

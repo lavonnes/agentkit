@@ -3,6 +3,7 @@ import {
   cdpApiActionProvider,
   cdpWalletActionProvider,
   erc20ActionProvider,
+  onrampActionProvider,
   pythActionProvider,
   SmartWalletProvider,
   walletActionProvider,
@@ -120,6 +121,9 @@ async function initializeAgent() {
         cdpWalletActionProvider({
           apiKeyName: process.env.CDP_API_KEY_NAME,
           apiKeyPrivateKey: process.env.CDP_API_KEY_PRIVATE_KEY,
+        }),
+        onrampActionProvider({
+          projectId: process.env.ONRAMP_PROJECT_ID!,
         }),
       ],
     });
