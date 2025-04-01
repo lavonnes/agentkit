@@ -63,7 +63,7 @@ export class OnrampActionProvider extends ActionProvider<EvmWalletProvider> {
   })
   async getOnrampBuyUrl(
     walletProvider: EvmWalletProvider,
-    args: z.infer<typeof GetOnrampBuyUrlActionSchema>,
+    args: z.infer<typeof GetOnrampBuyUrlActionSchema> = {},
   ): Promise<string> {
     const networkId = walletProvider.getNetwork().networkId;
     if (!networkId) {

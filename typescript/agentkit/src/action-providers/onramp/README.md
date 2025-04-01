@@ -13,11 +13,9 @@ onramp/
 ├── onrampActionProvider.ts       # Main provider implementation
 └── onrampActionProvider.test.ts  # Provider test suite
 ├── schemas.ts                    # Action schemas and types
-├── utils/                        # Utility functions
-│   ├── getOnrampBuyUrl.ts        # Generates Coinbase Onramp purchase URLs
-│   ├── networkConversion.ts      # Converts between network ID formats
-│   ├── types.ts                  # Type definitions for URL generation
-│   └── version.ts                # Version and URL constants
+├── utils.ts                      # Utility functions
+├── types.ts                      # Type definitions for URL generation
+├── version.ts                    # Version and URL constants
 ├── index.ts                      # Package exports
 └── README.md                     # Documentation (this file)
 ```
@@ -26,14 +24,10 @@ onramp/
 
 ### get_onramp_buy_url
 - **Purpose**: Generates a URL for purchasing cryptocurrency through Coinbase's onramp service
-- **Input**:
-  - `asset` (enum): The cryptocurrency to purchase ("ETH" or "USDC", defaults to "ETH")
 - **Output**: String containing the URL to the Coinbase-powered purchase interface
 - **Example**:
   ```typescript
-  const result = await provider.getOnrampBuyUrl(walletProvider, {
-    asset: "ETH"
-  });
+  const result = await provider.getOnrampBuyUrl(walletProvider);
   ```
 
 Use this action when:
