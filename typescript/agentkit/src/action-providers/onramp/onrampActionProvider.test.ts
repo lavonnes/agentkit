@@ -97,9 +97,9 @@ describe("OnrampActionProvider", () => {
         networkId: "unsupported-network",
       });
 
-      await expect(
-        provider.getOnrampBuyUrl(mockWalletProvider, {}),
-      ).rejects.toThrow("Network ID is not supported");
+      await expect(provider.getOnrampBuyUrl(mockWalletProvider, {})).rejects.toThrow(
+        "Network ID is not supported",
+      );
     });
 
     it("should throw error when network ID is not set", async () => {
@@ -108,9 +108,9 @@ describe("OnrampActionProvider", () => {
         networkId: undefined,
       });
 
-      await expect(
-        provider.getOnrampBuyUrl(mockWalletProvider, {}),
-      ).rejects.toThrow("Network ID is not set");
+      await expect(provider.getOnrampBuyUrl(mockWalletProvider, {})).rejects.toThrow(
+        "Network ID is not set",
+      );
     });
   });
 });

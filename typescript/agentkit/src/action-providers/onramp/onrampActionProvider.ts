@@ -43,7 +43,7 @@ export class OnrampActionProvider extends ActionProvider<EvmWalletProvider> {
    * This action provides a link to buy more cryptocurrency (ETH, USDC, or BTC) using fiat currency (regular money like USD).
    *
    * @param walletProvider - The wallet provider instance for blockchain interactions
-   * @param args - The arguments for the action
+   * @param _ - The arguments for the action (not used)
    * @returns A promise that resolves to a string describing the action result
    */
   @CreateAction({
@@ -63,7 +63,7 @@ export class OnrampActionProvider extends ActionProvider<EvmWalletProvider> {
   })
   async getOnrampBuyUrl(
     walletProvider: EvmWalletProvider,
-    args: z.infer<typeof GetOnrampBuyUrlActionSchema> = {},
+    _: z.infer<typeof GetOnrampBuyUrlActionSchema> = {},
   ): Promise<string> {
     const networkId = walletProvider.getNetwork().networkId;
     if (!networkId) {
