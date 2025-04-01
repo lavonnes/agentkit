@@ -6,6 +6,13 @@ This directory contains the **OnrampActionProvider** implementation, which provi
 
 The OnrampActionProvider is designed to work with EvmWalletProvider for blockchain interactions. It provides actions that enable users to purchase cryptocurrency when they need more funds, integrating with Coinbase's onramp service.
 
+### Environment Variables
+```
+CDP_PROJECT_ID
+```
+
+Creating the OnrampActionProvider requires a CDP project ID. You can create one at https://portal.cdp.coinbase.com/
+
 ## Directory Structure
 
 ```

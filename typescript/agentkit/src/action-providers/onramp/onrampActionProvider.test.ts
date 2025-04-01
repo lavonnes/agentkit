@@ -98,7 +98,7 @@ describe("OnrampActionProvider", () => {
       });
 
       await expect(provider.getOnrampBuyUrl(mockWalletProvider, {})).rejects.toThrow(
-        "Network ID is not supported",
+        "Network ID is not supported. Make sure you are using a supported mainnet network.",
       );
     });
 

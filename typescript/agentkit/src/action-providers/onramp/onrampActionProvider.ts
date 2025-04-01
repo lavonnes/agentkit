@@ -71,7 +71,9 @@ export class OnrampActionProvider extends ActionProvider<EvmWalletProvider> {
     }
     const network = convertNetworkIdToOnrampNetworkId(networkId);
     if (!network) {
-      throw new Error("Network ID is not supported");
+      throw new Error(
+        "Network ID is not supported. Make sure you are using a supported mainnet network.",
+      );
     }
 
     return getOnrampBuyUrl({
