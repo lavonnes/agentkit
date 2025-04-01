@@ -45,7 +45,7 @@ Use this action when:
 ## Implementation Details
 
 ### Network Support
-This provider supports all evm networks.
+This provider supports base, ethereum, polygon, optimism, and arbitrum mainnet networks.
 
 ### Wallet Provider Integration
 This provider is specifically designed to work with EvmWalletProvider. Key integration points:

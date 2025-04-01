@@ -92,8 +92,11 @@ export class OnrampActionProvider extends ActionProvider<EvmWalletProvider> {
    * @returns True if the network is supported
    */
   supportsNetwork(network: Network): boolean {
-    // all protocol networks
-    return network.protocolFamily === "evm";
+    return Boolean(
+      network.networkId &&
+        convertNetworkIdToOnrampNetworkId(network.networkId) !== null &&
+        network.protocolFamily === "evm",
+    );
   }
 }
 
