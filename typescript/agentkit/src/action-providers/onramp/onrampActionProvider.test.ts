@@ -23,12 +23,22 @@ describe("OnrampActionProvider", () => {
   });
 
   describe("network support", () => {
-    it("should support the protocol family", () => {
+    it("should support valid EVM networks", () => {
       expect(
         provider.supportsNetwork({
+          networkId: "base-mainnet",
           protocolFamily: "evm",
         }),
       ).toBe(true);
+    });
+
+    it("should not support invalid EVM networks, such as testnets", () => {
+      expect(
+        provider.supportsNetwork({
+          networkId: "base-sepolia",
+          protocolFamily: "evm",
+        }),
+      ).toBe(false);
     });
 
     it("should not support other protocol families", () => {
