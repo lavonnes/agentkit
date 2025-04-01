@@ -36,3 +36,26 @@ export function getOnrampBuyUrl({
 
   return url.toString();
 }
+
+/**
+ * Converts a network ID to an Onramp network ID.
+ *
+ * @param networkId - The network ID to convert
+ * @returns The Onramp network ID or null if the network ID is not supported
+ */
+export const convertNetworkIdToOnrampNetworkId = (networkId: string): string | null => {
+  switch (networkId) {
+    case "base-mainnet":
+      return "base";
+    case "ethereum-mainnet":
+      return "ethereum";
+    case "polygon-mainnet":
+      return "polygon";
+    case "optimism-mainnet":
+      return "optimism";
+    case "arbitrum-mainnet":
+      return "arbitrum";
+    default:
+      return null;
+  }
+};

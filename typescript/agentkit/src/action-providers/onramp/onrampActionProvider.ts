@@ -13,8 +13,7 @@ import { Network } from "../../network";
 import { CreateAction } from "../actionDecorator";
 import { EvmWalletProvider } from "../../wallet-providers";
 import { GetOnrampBuyUrlActionSchema } from "./schemas";
-import { getOnrampBuyUrl } from "./utils/getOnrampBuyUrl";
-import { convertNetworkIdToOnrampNetworkId } from "./utils/networkConversion";
+import { getOnrampBuyUrl, convertNetworkIdToOnrampNetworkId } from "./utils";
 
 type OnrampActionProviderProps = {
   projectId: string;
@@ -51,7 +50,7 @@ export class OnrampActionProvider extends ActionProvider<EvmWalletProvider> {
     name: "get_onramp_buy_url",
     description: `
       Get a URL to purchase more cryptocurrency when funds are low. This action provides a link to buy more 
-      cryptocurrency (ETH, USDC, or BTC) using fiat currency (regular money like USD). 
+      cryptocurrency, defaulting to ETH, using fiat currency (regular money like USD). 
       
       Use this when:
       - You detect that the wallet has insufficient funds for a transaction
@@ -80,7 +79,6 @@ export class OnrampActionProvider extends ActionProvider<EvmWalletProvider> {
       addresses: {
         [walletProvider.getAddress()]: [network],
       },
-      defaultAsset: args.asset,
       defaultNetwork: network,
     });
   }

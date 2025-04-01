@@ -46,19 +46,9 @@ describe("OnrampActionProvider", () => {
 
   describe("action validation", () => {
     it("should validate getOnrampBuyUrl schema", () => {
-      const validInput = {
-        asset: "ETH",
-      };
+      const validInput = {};
       const parseResult = GetOnrampBuyUrlActionSchema.safeParse(validInput);
       expect(parseResult.success).toBe(true);
-    });
-
-    it("should reject invalid asset input", () => {
-      const invalidInput = {
-        asset: "INVALID_COIN",
-      };
-      const parseResult = GetOnrampBuyUrlActionSchema.safeParse(invalidInput);
-      expect(parseResult.success).toBe(false);
     });
   });
 
@@ -79,9 +69,7 @@ describe("OnrampActionProvider", () => {
     }
 
     it("should execute getOnrampBuyUrl with wallet provider", async () => {
-      const result = await provider.getOnrampBuyUrl(mockWalletProvider, {
-        asset: "ETH",
-      });
+      const result = await provider.getOnrampBuyUrl(mockWalletProvider, {});
 
       const url = new URL(result);
       const params = parseUrlParams(result);
@@ -92,7 +80,6 @@ describe("OnrampActionProvider", () => {
       // Verify all expected parameters are present with correct values
       expect(params.get("appId")).toBe("test-project-id");
       expect(params.get("defaultNetwork")).toBe("base");
-      expect(params.get("defaultAsset")).toBe("ETH");
 
       // Verify address configuration
       const addressConfig = JSON.parse(params.get("addresses") || "{}");
@@ -104,28 +91,6 @@ describe("OnrampActionProvider", () => {
       expect(mockWalletProvider.getAddress).toHaveBeenCalled();
     });
 
-    it("should support different assets with correct network mappings", async () => {
-      const ethResult = await provider.getOnrampBuyUrl(mockWalletProvider, {
-        asset: "ETH",
-      });
-      const ethParams = parseUrlParams(ethResult);
-      expect(ethParams.get("defaultAsset")).toBe("ETH");
-      expect(ethParams.get("defaultNetwork")).toBe("base");
-
-      const usdcResult = await provider.getOnrampBuyUrl(mockWalletProvider, {
-        asset: "USDC",
-      });
-      const usdcParams = parseUrlParams(usdcResult);
-      expect(usdcParams.get("defaultAsset")).toBe("USDC");
-      expect(usdcParams.get("defaultNetwork")).toBe("base");
-
-      // Verify address configuration remains consistent
-      const addressConfig = JSON.parse(usdcParams.get("addresses") || "{}");
-      expect(addressConfig).toEqual({
-        "0x123": ["base"],
-      });
-    });
-
     it("should throw error for unsupported network", async () => {
       mockWalletProvider.getNetwork.mockReturnValue({
         protocolFamily: "evm",
@@ -133,9 +98,7 @@ describe("OnrampActionProvider", () => {
       });
 
       await expect(
-        provider.getOnrampBuyUrl(mockWalletProvider, {
-          asset: "ETH",
-        }),
+        provider.getOnrampBuyUrl(mockWalletProvider, {}),
       ).rejects.toThrow("Network ID is not supported");
     });
 
@@ -146,9 +109,7 @@ describe("OnrampActionProvider", () => {
       });
 
       await expect(
-        provider.getOnrampBuyUrl(mockWalletProvider, {
-          asset: "ETH",
-        }),
+        provider.getOnrampBuyUrl(mockWalletProvider, {}),
       ).rejects.toThrow("Network ID is not set");
     });
   });

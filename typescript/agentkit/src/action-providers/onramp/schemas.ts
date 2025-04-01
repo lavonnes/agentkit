@@ -11,14 +11,4 @@ import { z } from "zod";
  * Example action schema demonstrating various field types and validations.
  * Replace or modify this with your actual action schemas.
  */
-export const GetOnrampBuyUrlActionSchema = z.object({
-  /**
-   * The cryptocurrency asset to purchase (ETH, USDC, or BTC)
-   */
-  asset: z
-    .enum(["ETH", "USDC"])
-    .default("ETH")
-    .describe(
-      "The cryptocurrency to purchase. Use this when you need to buy more funds to complete transactions.",
-    ),
-});
+export const GetOnrampBuyUrlActionSchema = z.object({});
