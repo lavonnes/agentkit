@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
-import { getMcpTools } from "./index";
+import { getMcpTools } from "./index.js";
 import { AgentKit, Action } from "@coinbase/agentkit";
 
 // Mocking the Action class
