@@ -1,4 +1,3 @@
-import packageJson from "../../../package.json" with { type: "json" };
 import { Coinbase, ExternalAddress } from "@coinbase/coinbase-sdk";
 import { z } from "zod";
 import { CreateAction } from "../actionDecorator.js";
@@ -6,6 +5,8 @@ import { ActionProvider } from "../actionProvider.js";
 import { Network } from "../../network/index.js";
 import { CdpProviderConfig, WalletProvider } from "../../wallet-providers/index.js";
 import { AddressReputationSchema, RequestFaucetFundsSchema } from "./schemas.js";
+
+const packageJson = require("../../../package.json");
 
 /**
  * CdpApiActionProvider is an action provider for CDP API.

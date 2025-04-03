@@ -1,12 +1,13 @@
 import { Coinbase } from "@coinbase/coinbase-sdk";
 import { z } from "zod";
-import packageJson from "../../../package.json" with { type: "json" };
 import { CreateAction } from "../actionDecorator.js";
 import { ActionProvider } from "../actionProvider.js";
 import { Network } from "../../network/index.js";
 import { CdpWalletProvider, CdpProviderConfig } from "../../wallet-providers/index.js";
 import { SolidityVersions } from "./constants.js";
 import { DeployContractSchema, DeployNftSchema, DeployTokenSchema, TradeSchema } from "./schemas.js";
+
+const packageJson = require("../../../package.json");
 
 /**
  * CdpWalletActionProvider is an action provider for Cdp.

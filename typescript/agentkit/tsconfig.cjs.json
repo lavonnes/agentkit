@@ -1,8 +1,14 @@
 {
-  "extends": "./tsconfig.esm.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist/cjs",
     "module": "commonjs",
-    "moduleResolution": "node"
-  }
+    "moduleResolution": "node",
+    "rootDir": "./src",
+    "paths": {
+      "@privy-io/server-auth": ["./node_modules/@privy-io/server-auth/dist/cjs"],
+      "@privy-io/server-auth/viem": ["./node_modules/@privy-io/server-auth/dist/cjs/viem"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/tests"]
 }

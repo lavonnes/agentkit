@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "rootDir": "./src",
+    "paths": {
+      "@privy-io/server-auth": ["./node_modules/@privy-io/server-auth/dist/esm"],
+      "@privy-io/server-auth/viem": ["./node_modules/@privy-io/server-auth/dist/esm/viem"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/tests"]
+}

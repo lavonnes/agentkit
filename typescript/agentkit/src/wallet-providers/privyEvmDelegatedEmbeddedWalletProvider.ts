@@ -1,6 +1,5 @@
 import { WalletWithMetadata } from "@privy-io/server-auth";
-import canonicalize from "canonicalize";
-import crypto from "crypto";
+import * as crypto from "crypto";
 import {
   Abi,
   Address,
@@ -15,11 +14,18 @@ import {
   createPublicClient,
   http,
   parseEther,
+  Chain,
 } from "viem";
 import { Network } from "../network/index.js";
 import { NETWORK_ID_TO_CHAIN_ID, getChain } from "../network/network.js";
 import { PrivyWalletConfig, PrivyWalletExport, createPrivyClient } from "./privyShared.js";
 import { WalletProvider } from "./walletProvider.js";
+
+const canonicalizeImport = require("canonicalize");
+const canonicalize =
+  typeof canonicalizeImport === "function"
+    ? canonicalizeImport
+    : canonicalizeImport.default;
 
 interface PrivyResponse<T> {
   data: T;
@@ -83,9 +89,9 @@ export class PrivyEvmDelegatedEmbeddedWalletProvider extends WalletProvider {
     }
 
     this.#publicClient = createPublicClient({
-      chain,
-      transport: http(),
-    });
+      chain: chain as Chain,
+      transport: http()
+    }) as PublicClient;
   }
 
   /**
@@ -440,7 +446,7 @@ export class PrivyEvmDelegatedEmbeddedWalletProvider extends WalletProvider {
         },
       };
 
-      const serializedPayload = canonicalize(payload);
+      const serializedPayload = canonicalize.default(payload);
       if (!serializedPayload) throw new Error("Failed to canonicalize payload");
 
       const serializedPayloadBuffer = Buffer.from(serializedPayload);

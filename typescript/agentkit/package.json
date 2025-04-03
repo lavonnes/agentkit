@@ -16,19 +16,18 @@
         "default": "./dist/esm/index.js"
       },
       "require": {
-        "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
+      "types": "./dist/cjs/index.d.ts",
+      "default": "./dist/cjs/index.js"
       }
-    },
-    "./package.json": "./package.json"
+    }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc -p tsconfig.esm.json",
-    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build": "pnpm clean && pnpm build:cjs && pnpm build:esm",
+    "build:esm": "tsc --project tsconfig.json --outDir dist/esm && echo '{\"type\":\"module\"}' > dist/esm/package.json",
+    "build:cjs": "tsc --project tsconfig.cjs.json --outDir dist/cjs --removeComments --verbatimModuleSyntax false && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
     "lint": "eslint -c .eslintrc.json \"src/**/*.ts\"",
     "lint:fix": "eslint -c .eslintrc.json \"src/**/*.ts\" --fix",
     "format": "prettier -c .prettierrc --write \"**/*.{ts,js,cjs,json,md}\"",
@@ -60,7 +59,7 @@
     "@alloralabs/allora-sdk": "^0.1.0",
     "@coinbase/coinbase-sdk": "^0.20.0",
     "@jup-ag/api": "^6.0.39",
-    "@privy-io/server-auth": "^1.18.4",
+    "@privy-io/server-auth": "^1.19.3",
     "@solana/spl-token": "^0.4.12",
     "@solana/web3.js": "^1.98.0",
     "bs58": "^4.0.1",

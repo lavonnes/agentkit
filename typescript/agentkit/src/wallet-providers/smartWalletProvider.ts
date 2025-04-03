@@ -24,7 +24,8 @@ import {
 } from "viem";
 import { Network, NETWORK_ID_TO_CHAIN_ID, NETWORK_ID_TO_VIEM_CHAIN } from "../network/index.js";
 import { EvmWalletProvider } from "./evmWalletProvider.js";
-import packageJson from "../../package.json" with { type: "json" };
+
+const packageJson = require("../../package.json");
 
 export interface ConfigureSmartWalletOptions {
   cdpApiKeyName?: string;

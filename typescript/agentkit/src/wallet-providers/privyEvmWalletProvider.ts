@@ -1,5 +1,5 @@
 import { PrivyClient } from "@privy-io/server-auth";
-import { createViemAccount } from "@privy-io/server-auth/viem";
+import { createViemAccount, GetViemAccountInputType } from "@privy-io/server-auth/viem";
 import { ViemWalletProvider } from "./viemWalletProvider.js";
 import { createWalletClient, http, WalletClient } from "viem";
 import { getChain } from "../network/network.js";
@@ -115,7 +115,8 @@ export class PrivyEvmWalletProvider extends ViemWalletProvider {
     const account = await createViemAccount({
       walletId,
       address,
-      privy,
+      // TODO: Fix type safety. Currently removing `as unknown as GetViemAccountInputType["privy"]` breaks the type checker, due to conflicts between the esm/cjs Privy types and how they are loaded.
+      privy: privy as unknown as GetViemAccountInputType["privy"],
     });
 
     const chainId = config.chainId || "84532";

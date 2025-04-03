@@ -55,7 +55,8 @@ export class OpenseaActionProvider extends ActionProvider<EvmWalletProvider> {
     const walletWithProvider = new Wallet(config.privateKey!, provider);
     this.walletWithProvider = walletWithProvider;
 
-    const openseaSDK = new OpenSeaSDK(walletWithProvider, {
+    // TODO: Fix ethers signer type safety. Currently removing `as any` breaks the type checker, due to conflicts between the esm/cjs Ethers types and how they are loaded.
+    const openseaSDK = new OpenSeaSDK(walletWithProvider as any, {
       chain: chainIdToOpenseaChain(chainId),
       apiKey: this.apiKey,
     });

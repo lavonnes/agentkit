@@ -1,4 +1,3 @@
-import packageJson from "../../package.json" with { type: "json" };
 import { Decimal } from "decimal.js";
 import {
   createPublicClient,
@@ -33,6 +32,8 @@ import {
 } from "@coinbase/coinbase-sdk";
 import { NETWORK_ID_TO_CHAIN_ID, NETWORK_ID_TO_VIEM_CHAIN } from "../network/network.js";
 import { applyGasMultiplier } from "../utils.js";
+
+const packageJson = require("../../package.json");
 
 /**
  * Configuration options for the CDP Providers.
