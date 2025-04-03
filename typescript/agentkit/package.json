@@ -25,9 +25,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm clean && pnpm build:cjs && pnpm build:esm",
-    "build:esm": "tsc --project tsconfig.json --outDir dist/esm && echo '{\"type\":\"module\"}' > dist/esm/package.json",
-    "build:cjs": "tsc --project tsconfig.cjs.json --outDir dist/cjs --removeComments --verbatimModuleSyntax false && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "build": "pnpm clean && pnpm build:cjs && pnpm build:esm && pnpm exec tsx scripts/packages/writePackageJson.ts",
+    "build:esm": "tsc --project tsconfig.json --outDir dist/esm",
+    "build:cjs": "tsc --project tsconfig.cjs.json --outDir dist/cjs --removeComments --verbatimModuleSyntax false",
     "lint": "eslint -c .eslintrc.json \"src/**/*.ts\"",
     "lint:fix": "eslint -c .eslintrc.json \"src/**/*.ts\" --fix",
     "format": "prettier -c .prettierrc --write \"**/*.{ts,js,cjs,json,md}\"",
