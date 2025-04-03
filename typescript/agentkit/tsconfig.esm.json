@@ -1,9 +1,10 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./dist/esm",
     "rootDir": "./src",
-    "module": "Node16"
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/tests"]
