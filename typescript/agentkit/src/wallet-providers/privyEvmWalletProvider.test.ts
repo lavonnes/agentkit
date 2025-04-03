@@ -1,4 +1,4 @@
-import { PrivyEvmWalletProvider } from "./privyEvmWalletProvider";
+import { PrivyEvmWalletProvider } from "./privyEvmWalletProvider.js";
 import { Address, Hex, ReadContractParameters } from "viem";
 
 global.fetch = jest.fn(() =>

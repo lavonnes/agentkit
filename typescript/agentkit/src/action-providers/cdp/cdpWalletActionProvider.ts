@@ -1,12 +1,12 @@
 import { Coinbase } from "@coinbase/coinbase-sdk";
 import { z } from "zod";
-import { version } from "../../../package.json";
-import { CreateAction } from "../actionDecorator";
-import { ActionProvider } from "../actionProvider";
-import { Network } from "../../network";
-import { CdpWalletProvider, CdpProviderConfig } from "../../wallet-providers";
-import { SolidityVersions } from "./constants";
-import { DeployContractSchema, DeployNftSchema, DeployTokenSchema, TradeSchema } from "./schemas";
+import packageJson from "../../../package.json" with { type: "json" };
+import { CreateAction } from "../actionDecorator.js";
+import { ActionProvider } from "../actionProvider.js";
+import { Network } from "../../network/index.js";
+import { CdpWalletProvider, CdpProviderConfig } from "../../wallet-providers/index.js";
+import { SolidityVersions } from "./constants.js";
+import { DeployContractSchema, DeployNftSchema, DeployTokenSchema, TradeSchema } from "./schemas.js";
 
 /**
  * CdpWalletActionProvider is an action provider for Cdp.
@@ -27,10 +27,10 @@ export class CdpWalletActionProvider extends ActionProvider<CdpWalletProvider> {
         apiKeyName: config.apiKeyName,
         privateKey: config.apiKeyPrivateKey?.replace(/\\n/g, "\n"),
         source: "agentkit",
-        sourceVersion: version,
+        sourceVersion: packageJson.version,
       });
     } else {
-      Coinbase.configureFromJson({ source: "agentkit", sourceVersion: version });
+      Coinbase.configureFromJson({ source: "agentkit", sourceVersion: packageJson.version });
     }
   }
 

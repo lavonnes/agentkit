@@ -1,7 +1,7 @@
-import { OnrampActionProvider } from "./onrampActionProvider";
-import { Network } from "../../network";
-import { GetOnrampBuyUrlActionSchema } from "./schemas";
-import { EvmWalletProvider } from "../../wallet-providers";
+import { OnrampActionProvider } from "./onrampActionProvider.js";
+import { Network } from "../../network/index.js";
+import { GetOnrampBuyUrlActionSchema } from "./schemas.js";
+import { EvmWalletProvider } from "../../wallet-providers/evmWalletProvider.js";
 
 describe("OnrampActionProvider", () => {
   const provider = new OnrampActionProvider({

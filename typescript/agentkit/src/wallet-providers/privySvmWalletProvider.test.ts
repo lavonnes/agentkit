@@ -1,6 +1,6 @@
-import { PrivySvmWalletProvider } from "./privySvmWalletProvider";
+import { PrivySvmWalletProvider } from "./privySvmWalletProvider.js";
 import { Connection, VersionedTransaction, clusterApiUrl as _clusterApiUrl } from "@solana/web3.js";
-import * as solanaNetworks from "../network/svm";
+import * as solanaNetworks from "../network/index.js";
 
 global.fetch = jest.fn(() =>
   Promise.resolve({

@@ -1,11 +1,11 @@
 import { z } from "zod";
-import { ActionProvider } from "../actionProvider";
-import { CreateAction } from "../actionDecorator";
-import { Network } from "../../network";
-import { MessariResearchQuestionSchema } from "./schemas";
-import { MESSARI_BASE_URL, API_KEY_MISSING_ERROR } from "./constants";
-import { MessariActionProviderConfig, MessariAPIResponse, MessariError } from "./types";
-import { createMessariError, formatMessariApiError, formatGenericError } from "./utils";
+import { ActionProvider } from "../actionProvider.js";
+import { CreateAction } from "../actionDecorator.js";
+import { Network } from "../../network/index.js";
+import { MessariResearchQuestionSchema } from "./schemas.js";
+import { MESSARI_BASE_URL, API_KEY_MISSING_ERROR } from "./constants.js";
+import { MessariActionProviderConfig, MessariAPIResponse, MessariError } from "./types.js";
+import { createMessariError, formatMessariApiError, formatGenericError } from "./utils.js";
 
 /**
  * MessariActionProvider is an action provider for Messari AI toolkit interactions.

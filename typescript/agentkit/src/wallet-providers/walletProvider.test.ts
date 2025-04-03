@@ -1,6 +1,6 @@
-import { WalletProvider } from "./walletProvider";
-import { Network } from "../network";
-import { sendAnalyticsEvent } from "../analytics";
+import { WalletProvider } from "./walletProvider.js";
+import { Network } from "../network/index.js";
+import { sendAnalyticsEvent } from "../analytics/index.js";
 
 // Mock fetch globally to prevent any actual network requests
 global.fetch = jest.fn(() =>

@@ -1,7 +1,7 @@
 import {
   PrivyEvmDelegatedEmbeddedWalletConfig,
   PrivyEvmDelegatedEmbeddedWalletProvider,
-} from "./privyEvmDelegatedEmbeddedWalletProvider";
+} from "./privyEvmDelegatedEmbeddedWalletProvider.js";
 import { Address, Hex } from "viem";
 
 global.fetch = jest.fn().mockImplementation(async (url, init) => {

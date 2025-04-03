@@ -1,5 +1,5 @@
-import type { GetOnrampUrlWithProjectIdParams, GetOnrampUrlWithSessionTokenParams } from "./types";
-import { ONRAMP_BUY_URL, VERSION } from "./version";
+import type { GetOnrampUrlWithProjectIdParams, GetOnrampUrlWithSessionTokenParams } from "./types.js";
+import { ONRAMP_BUY_URL, VERSION } from "./version.js";
 
 /**
  * Builds a Coinbase Onramp buy URL using the provided parameters.

@@ -4,5 +4,5 @@
  * @module onramp
  */
 
-export * from "./onrampActionProvider";
-export * from "./schemas";
+export * from "./onrampActionProvider.js";
+export * from "./schemas.js";

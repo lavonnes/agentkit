@@ -1,8 +1,8 @@
 import { encodeFunctionData, parseEther } from "viem";
-import { EvmWalletProvider } from "../../wallet-providers";
-import { approve } from "../../utils";
-import { MorphoActionProvider } from "./morphoActionProvider";
-import { METAMORPHO_ABI } from "./constants";
+import { EvmWalletProvider } from "../../wallet-providers/evmWalletProvider.js";
+import { approve } from "../../utils.js";
+import { MorphoActionProvider } from "./morphoActionProvider.js";
+import { METAMORPHO_ABI } from "./constants.js";
 
 const MOCK_VAULT_ADDRESS = "0x1234567890123456789012345678901234567890";
 const MOCK_ATOMIC_ASSETS = "1000000000000000000";

@@ -1,6 +1,6 @@
-import { PrivyWalletProvider } from "./privyWalletProvider";
-import { PrivyEvmWalletProvider } from "./privyEvmWalletProvider";
-import { PrivySvmWalletProvider } from "./privySvmWalletProvider";
+import { PrivyWalletProvider } from "./privyWalletProvider.js";
+import { PrivyEvmWalletProvider } from "./privyEvmWalletProvider.js";
+import { PrivySvmWalletProvider } from "./privySvmWalletProvider.js";
 
 global.fetch = jest.fn(() =>
   Promise.resolve({

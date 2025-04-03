@@ -1,4 +1,4 @@
-import { EvmWalletProvider } from "./evmWalletProvider";
+import { EvmWalletProvider } from "./evmWalletProvider.js";
 
 global.fetch = jest.fn(() =>
   Promise.resolve({

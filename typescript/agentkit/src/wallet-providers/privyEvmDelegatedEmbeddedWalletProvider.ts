@@ -16,10 +16,10 @@ import {
   http,
   parseEther,
 } from "viem";
-import { Network } from "../network";
-import { NETWORK_ID_TO_CHAIN_ID, getChain } from "../network/network";
-import { PrivyWalletConfig, PrivyWalletExport, createPrivyClient } from "./privyShared";
-import { WalletProvider } from "./walletProvider";
+import { Network } from "../network/index.js";
+import { NETWORK_ID_TO_CHAIN_ID, getChain } from "../network/network.js";
+import { PrivyWalletConfig, PrivyWalletExport, createPrivyClient } from "./privyShared.js";
+import { WalletProvider } from "./walletProvider.js";
 
 interface PrivyResponse<T> {
   data: T;

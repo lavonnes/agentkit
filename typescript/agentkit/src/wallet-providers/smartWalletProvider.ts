@@ -22,9 +22,9 @@ import {
   TransactionRequest,
   PublicClient as ViemPublicClient,
 } from "viem";
-import { Network, NETWORK_ID_TO_CHAIN_ID, NETWORK_ID_TO_VIEM_CHAIN } from "../network";
-import { EvmWalletProvider } from "./evmWalletProvider";
-import { version } from "../../package.json";
+import { Network, NETWORK_ID_TO_CHAIN_ID, NETWORK_ID_TO_VIEM_CHAIN } from "../network/index.js";
+import { EvmWalletProvider } from "./evmWalletProvider.js";
+import packageJson from "../../package.json" with { type: "json" };
 
 export interface ConfigureSmartWalletOptions {
   cdpApiKeyName?: string;
@@ -118,10 +118,10 @@ export class SmartWalletProvider extends EvmWalletProvider {
         apiKeyName: cdpApiKeyName,
         privateKey: cdpApiKeyPrivateKey?.replace(/\\n/g, "\n"),
         source: "agentkit",
-        sourceVersion: version,
+        sourceVersion: packageJson.version,
       });
     } else {
-      Coinbase.configureFromJson({ source: "agentkit", sourceVersion: version });
+      Coinbase.configureFromJson({ source: "agentkit", sourceVersion: packageJson.version });
     }
 
     const smartWallet = config.smartWalletAddress

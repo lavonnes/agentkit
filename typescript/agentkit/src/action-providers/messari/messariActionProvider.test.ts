@@ -1,5 +1,5 @@
-import { messariActionProvider, MessariActionProvider } from "./messariActionProvider";
-import { API_KEY_MISSING_ERROR } from "./constants";
+import { messariActionProvider, MessariActionProvider } from "./messariActionProvider.js";
+import { API_KEY_MISSING_ERROR } from "./constants.js";
 
 const MOCK_API_KEY = "messari-test-key";
 

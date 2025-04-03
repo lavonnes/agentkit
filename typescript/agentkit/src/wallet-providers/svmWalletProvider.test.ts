@@ -1,4 +1,4 @@
-import { SvmWalletProvider } from "./svmWalletProvider";
+import { SvmWalletProvider } from "./svmWalletProvider.js";
 
 global.fetch = jest.fn(() =>
   Promise.resolve({

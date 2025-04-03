@@ -1,9 +1,9 @@
-import { PrivyEvmWalletProvider, PrivyEvmWalletConfig } from "./privyEvmWalletProvider";
-import { PrivySvmWalletProvider, PrivySvmWalletConfig } from "./privySvmWalletProvider";
+import { PrivyEvmWalletProvider, PrivyEvmWalletConfig } from "./privyEvmWalletProvider.js";
+import { PrivySvmWalletProvider, PrivySvmWalletConfig } from "./privySvmWalletProvider.js";
 import {
   PrivyEvmDelegatedEmbeddedWalletProvider,
   PrivyEvmDelegatedEmbeddedWalletConfig,
-} from "./privyEvmDelegatedEmbeddedWalletProvider";
+} from "./privyEvmDelegatedEmbeddedWalletProvider.js";
 
 export type PrivyWalletConfig =
   | PrivyEvmWalletConfig

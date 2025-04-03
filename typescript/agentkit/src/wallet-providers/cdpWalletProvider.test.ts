@@ -1,5 +1,5 @@
-import { CdpWalletProvider } from "./cdpWalletProvider";
-import { Network } from "../network";
+import { CdpWalletProvider } from "./cdpWalletProvider.js";
+import { Network } from "../network/index.js";
 import {
   Abi,
   EstimateFeesPerGasReturnType,

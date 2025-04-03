@@ -1,4 +1,4 @@
-import { ViemWalletProvider, ViemWalletProviderGasConfig } from "./viemWalletProvider";
+import { ViemWalletProvider, ViemWalletProviderGasConfig } from "./viemWalletProvider.js";
 import {
   TransactionRequest,
   Address,

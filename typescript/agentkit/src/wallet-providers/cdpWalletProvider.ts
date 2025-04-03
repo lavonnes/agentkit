@@ -1,4 +1,4 @@
-import { version } from "../../package.json";
+import packageJson from "../../package.json" with { type: "json" };
 import { Decimal } from "decimal.js";
 import {
   createPublicClient,
@@ -17,8 +17,8 @@ import {
   Address,
   Hex,
 } from "viem";
-import { EvmWalletProvider } from "./evmWalletProvider";
-import { Network } from "../network";
+import { EvmWalletProvider } from "./evmWalletProvider.js";
+import { Network } from "../network/index.js";
 import {
   Coinbase,
   CreateERC20Options,
@@ -31,8 +31,8 @@ import {
   hashTypedDataMessage,
   hashMessage,
 } from "@coinbase/coinbase-sdk";
-import { NETWORK_ID_TO_CHAIN_ID, NETWORK_ID_TO_VIEM_CHAIN } from "../network/network";
-import { applyGasMultiplier } from "../utils";
+import { NETWORK_ID_TO_CHAIN_ID, NETWORK_ID_TO_VIEM_CHAIN } from "../network/network.js";
+import { applyGasMultiplier } from "../utils.js";
 
 /**
  * Configuration options for the CDP Providers.
@@ -150,10 +150,10 @@ export class CdpWalletProvider extends EvmWalletProvider {
         apiKeyName: config.apiKeyName,
         privateKey: config.apiKeyPrivateKey?.replace(/\\n/g, "\n"),
         source: "agentkit",
-        sourceVersion: version,
+        sourceVersion: packageJson.version,
       });
     } else {
-      Coinbase.configureFromJson({ source: "agentkit", sourceVersion: version });
+      Coinbase.configureFromJson({ source: "agentkit", sourceVersion: packageJson.version });
     }
 
     let wallet: Wallet;

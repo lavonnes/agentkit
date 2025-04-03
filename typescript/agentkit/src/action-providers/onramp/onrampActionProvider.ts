@@ -8,12 +8,12 @@
  */
 
 import { z } from "zod";
-import { ActionProvider } from "../actionProvider";
-import { Network } from "../../network";
-import { CreateAction } from "../actionDecorator";
-import { EvmWalletProvider } from "../../wallet-providers";
-import { GetOnrampBuyUrlActionSchema } from "./schemas";
-import { getOnrampBuyUrl, convertNetworkIdToOnrampNetworkId } from "./utils";
+import { ActionProvider } from "../actionProvider.js";
+import { Network } from "../../network/index.js";
+import { CreateAction } from "../actionDecorator.js";
+import { EvmWalletProvider } from "../../wallet-providers/evmWalletProvider.js";
+import { GetOnrampBuyUrlActionSchema } from "./schemas.js";
+import { getOnrampBuyUrl, convertNetworkIdToOnrampNetworkId } from "./utils.js";
 
 type OnrampActionProviderProps = {
   projectId: string;

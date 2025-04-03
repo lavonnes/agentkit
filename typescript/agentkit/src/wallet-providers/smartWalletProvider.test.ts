@@ -1,4 +1,4 @@
-import { SmartWalletProvider } from "./smartWalletProvider";
+import { SmartWalletProvider } from "./smartWalletProvider.js";
 import {
   TransactionRequest,
   Hex,

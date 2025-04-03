@@ -1,4 +1,4 @@
-import { SolanaKeypairWalletProvider } from "./solanaKeypairWalletProvider";
+import { SolanaKeypairWalletProvider } from "./solanaKeypairWalletProvider.js";
 import {
   Connection,
   Keypair,
@@ -6,7 +6,7 @@ import {
   VersionedTransaction,
   clusterApiUrl,
 } from "@solana/web3.js";
-import { SOLANA_DEVNET_GENESIS_BLOCK_HASH, SOLANA_NETWORKS } from "../network/svm";
+import { SOLANA_DEVNET_GENESIS_BLOCK_HASH, SOLANA_NETWORKS } from "../network/index.js";
 
 global.fetch = jest.fn(() =>
   Promise.resolve({

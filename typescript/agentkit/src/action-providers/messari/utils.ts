@@ -1,4 +1,4 @@
-import { MessariError, MessariErrorResponse } from "./types";
+import { MessariError, MessariErrorResponse } from "./types.js";
 
 /**
  * Creates a MessariError from an HTTP response
