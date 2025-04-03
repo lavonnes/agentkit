@@ -1,1 +1,1 @@
-export * from "./getVercelAiTools";
+export * from "./getVercelAiTools.js";
