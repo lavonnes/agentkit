@@ -1,4 +1,4 @@
-import { PrivyClient } from "@privy-io/server-auth";
+import { PrivyClient, SolanaCaip2ChainId } from "@privy-io/server-auth";
 import { SvmWalletProvider } from "./svmWalletProvider.js";
 import {
   RpcResponseAndContext,
@@ -78,7 +78,10 @@ export class PrivySvmWalletProvider extends SvmWalletProvider {
   public static async configureWithWallet<T extends PrivySvmWalletProvider>(
     config: PrivySvmWalletConfig,
   ): Promise<T> {
-    const { wallet, privy } = await createPrivyWallet(config);
+    const { wallet, privy } = await createPrivyWallet({
+      ...config,
+      chainType: "solana",
+    });
 
     const connection =
       config.connection ??
@@ -119,7 +122,7 @@ export class PrivySvmWalletProvider extends SvmWalletProvider {
     try {
       const { hash } = await this.#privyClient.walletApi.solana.signAndSendTransaction({
         walletId: this.#walletId,
-        caip2: `solana:${this.#genesisHash.substring(0, 32)}`,
+        caip2: `solana:${this.#genesisHash.substring(0, 32)}` as SolanaCaip2ChainId,
         transaction,
       });
 

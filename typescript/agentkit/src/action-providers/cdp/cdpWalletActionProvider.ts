@@ -6,8 +6,8 @@ import { Network } from "../../network/index.js";
 import { CdpWalletProvider, CdpProviderConfig } from "../../wallet-providers/index.js";
 import { SolidityVersions } from "./constants.js";
 import { DeployContractSchema, DeployNftSchema, DeployTokenSchema, TradeSchema } from "./schemas.js";
-
-const packageJson = require("../../../package.json");
+import path from "path";
+import fs from "fs";
 
 /**
  * CdpWalletActionProvider is an action provider for Cdp.
@@ -22,6 +22,9 @@ export class CdpWalletActionProvider extends ActionProvider<CdpWalletProvider> {
    */
   constructor(config: CdpProviderConfig = {}) {
     super("cdp_wallet", []);
+
+    const packageJsonPath = path.resolve(__dirname, "../../package.json");
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
 
     if (config.apiKeyName && config.apiKeyPrivateKey) {
       Coinbase.configure({

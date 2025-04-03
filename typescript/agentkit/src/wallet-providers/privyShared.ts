@@ -57,7 +57,7 @@ export const createPrivyClient = (config: PrivyWalletConfig) => {
  * @returns The created Privy wallet
  */
 export async function createPrivyWallet(
-  config: PrivyWalletConfig,
+  config: PrivyWalletConfig & { chainType: "ethereum" | "solana" },
 ): Promise<CreatePrivyWalletReturnType> {
   const privy = createPrivyClient(config);
 

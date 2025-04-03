@@ -32,8 +32,8 @@ import {
 } from "@coinbase/coinbase-sdk";
 import { NETWORK_ID_TO_CHAIN_ID, NETWORK_ID_TO_VIEM_CHAIN } from "../network/network.js";
 import { applyGasMultiplier } from "../utils.js";
-
-const packageJson = require("../../package.json");
+import path from "path";
+import fs from "fs";
 
 /**
  * Configuration options for the CDP Providers.
@@ -146,6 +146,10 @@ export class CdpWalletProvider extends EvmWalletProvider {
   public static async configureWithWallet(
     config: ConfigureCdpAgentkitWithWalletOptions = {},
   ): Promise<CdpWalletProvider> {
+
+    const packageJsonPath = path.resolve(__dirname, "../package.json");
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
+
     if (config.apiKeyName && config.apiKeyPrivateKey) {
       Coinbase.configure({
         apiKeyName: config.apiKeyName,

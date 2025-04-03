@@ -5,8 +5,8 @@ import { ActionProvider } from "../actionProvider.js";
 import { Network } from "../../network/index.js";
 import { CdpProviderConfig, WalletProvider } from "../../wallet-providers/index.js";
 import { AddressReputationSchema, RequestFaucetFundsSchema } from "./schemas.js";
-
-const packageJson = require("../../../package.json");
+import path from "path";
+import fs from "fs";
 
 /**
  * CdpApiActionProvider is an action provider for CDP API.
@@ -21,6 +21,9 @@ export class CdpApiActionProvider extends ActionProvider<WalletProvider> {
    */
   constructor(config: CdpProviderConfig = {}) {
     super("cdp_api", []);
+
+    const packageJsonPath = path.resolve(__dirname, "../../package.json");
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
 
     if (config.apiKeyName && config.apiKeyPrivateKey) {
       Coinbase.configure({

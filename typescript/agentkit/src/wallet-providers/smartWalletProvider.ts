@@ -24,8 +24,9 @@ import {
 } from "viem";
 import { Network, NETWORK_ID_TO_CHAIN_ID, NETWORK_ID_TO_VIEM_CHAIN } from "../network/index.js";
 import { EvmWalletProvider } from "./evmWalletProvider.js";
+import path from "path";
+import fs from "fs";
 
-const packageJson = require("../../package.json");
 
 export interface ConfigureSmartWalletOptions {
   cdpApiKeyName?: string;
@@ -110,6 +111,9 @@ export class SmartWalletProvider extends EvmWalletProvider {
         `Invalid chain id ${network.chainId}. Chain id must be one of ${supportedChainIds.join(", ")}`,
       );
     }
+
+    const packageJsonPath = path.resolve(__dirname, "../package.json");
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
 
     const cdpApiKeyName = config.cdpApiKeyName || process.env.CDP_API_KEY_NAME;
     const cdpApiKeyPrivateKey = config.cdpApiKeyPrivateKey || process.env.CDP_API_KEY_PRIVATE_KEY;

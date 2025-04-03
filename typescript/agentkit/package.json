@@ -16,8 +16,8 @@
         "default": "./dist/esm/index.js"
       },
       "require": {
-      "types": "./dist/cjs/index.d.ts",
-      "default": "./dist/cjs/index.js"
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
       }
     }
   },
@@ -59,6 +59,7 @@
     "@alloralabs/allora-sdk": "^0.1.0",
     "@coinbase/coinbase-sdk": "^0.20.0",
     "@jup-ag/api": "^6.0.39",
+    "@privy-io/public-api": "2.20.5",
     "@privy-io/server-auth": "^1.19.3",
     "@solana/spl-token": "^0.4.12",
     "@solana/web3.js": "^1.98.0",
