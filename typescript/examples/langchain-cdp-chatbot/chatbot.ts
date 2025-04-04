@@ -303,7 +303,7 @@ async function main() {
   }
 }
 
-if (require.main === module) {
+if (import.meta.url === process.argv[1] || import.meta.url === `file://${process.argv[1]}`) {
   console.log("Starting Agent...");
   main().catch(error => {
     console.error("Fatal error:", error);

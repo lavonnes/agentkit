@@ -20,12 +20,7 @@ import { Network } from "../network/index.js";
 import { NETWORK_ID_TO_CHAIN_ID, getChain } from "../network/network.js";
 import { PrivyWalletConfig, PrivyWalletExport, createPrivyClient } from "./privyShared.js";
 import { WalletProvider } from "./walletProvider.js";
-
-const canonicalizeImport = require("canonicalize");
-const canonicalize =
-  typeof canonicalizeImport === "function"
-    ? canonicalizeImport
-    : canonicalizeImport.default;
+import { canonicalize } from "json-canonicalize";
 
 interface PrivyResponse<T> {
   data: T;
@@ -446,7 +441,7 @@ export class PrivyEvmDelegatedEmbeddedWalletProvider extends WalletProvider {
         },
       };
 
-      const serializedPayload = canonicalize.default(payload);
+      const serializedPayload = canonicalize(payload);
       if (!serializedPayload) throw new Error("Failed to canonicalize payload");
 
       const serializedPayloadBuffer = Buffer.from(serializedPayload);

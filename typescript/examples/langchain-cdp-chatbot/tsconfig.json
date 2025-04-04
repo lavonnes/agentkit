@@ -3,7 +3,10 @@
   "compilerOptions": {
     "preserveSymlinks": true,
     "outDir": "./dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "es2020"
   },
   "include": ["*.ts"]
 }
