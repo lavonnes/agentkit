@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'typescript/**'
+      - '!typescript/README.md'
+
   workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
@@ -34,13 +38,12 @@ jobs:
         run: pnpm install --frozen-lockfile
         working-directory: ./typescript
 
-      - name: Version and/or Publish to NPM
+      - name: Version
         uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc
         with:
           commit: "chore: version typescript packages"
           title: "chore: version typescript packages"
           version: pnpm run changeset:version
-          publish: pnpm run publish
           cwd: ./typescript
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
